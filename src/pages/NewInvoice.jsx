@@ -62,8 +62,8 @@ function TypeSelector({ onSelect }) {
     {
       id: 'milestone',
       icon: Layers,
-      title: 'Milestone Invoice',
-      description: 'Split payments into stages tied to project milestones.',
+      title: 'Tiered Invoice',
+      description: 'Split payments into tiers tied to project milestones.',
     },
   ]
 
@@ -82,7 +82,7 @@ function TypeSelector({ onSelect }) {
               onMouseLeave={() => setHovered(false)}
               style={{
                 background: '#fff',
-                border: `2px solid ${hovered ? '#3d8b37' : '#e5e7eb'}`,
+                border: `2px solid ${hovered ? '#1e7ad6' : '#e5e7eb'}`,
                 borderRadius: 12,
                 padding: 28,
                 cursor: 'pointer',
@@ -91,11 +91,11 @@ function TypeSelector({ onSelect }) {
             >
               <div style={{
                 width: 48, height: 48, borderRadius: 10,
-                background: '#f0fdf4',
+                background: '#eff6ff',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 marginBottom: 16,
               }}>
-                <Icon size={24} color="#3d8b37" />
+                <Icon size={24} color="#1e7ad6" />
               </div>
               <div style={{ fontWeight: 800, fontSize: 17, color: '#111827', marginBottom: 8 }}>{title}</div>
               <div style={{ fontSize: 13, color: '#6b7280', lineHeight: 1.5 }}>{description}</div>
@@ -144,7 +144,7 @@ function ClientSelect({ onSelect, onBack }) {
           </button>
         </div>
 
-        <div style={{ fontSize: 13, fontWeight: 700, color: '#3d8b37', marginBottom: 8 }}>Active</div>
+        <div style={{ fontSize: 13, fontWeight: 700, color: '#1e7ad6', marginBottom: 8 }}>Active</div>
 
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           {filtered.map((client, i) => (
@@ -314,7 +314,7 @@ function PriceBreakdownPanel({ item, onChange }) {
             onClick={() => onChange({ ...item, showBreakdownToCustomer: !item.showBreakdownToCustomer })}
             style={{
               width: 32, height: 18, borderRadius: 9, border: 'none', cursor: 'pointer',
-              background: item.showBreakdownToCustomer ? '#3d8b37' : '#d1d5db', position: 'relative',
+              background: item.showBreakdownToCustomer ? '#1e7ad6' : '#d1d5db', position: 'relative',
             }}
           >
             <span style={{
@@ -326,7 +326,7 @@ function PriceBreakdownPanel({ item, onChange }) {
       </div>
 
       {autoUnitPrice !== null && (
-        <div style={{ padding: '5px 10px', background: '#f0fdf4', fontSize: 11, color: '#15803d' }}>
+        <div style={{ padding: '5px 10px', background: '#eff6ff', fontSize: 11, color: '#15803d' }}>
           Auto-sum: ${autoUnitPrice.toFixed(2)} (unit price is read-only)
         </div>
       )}
@@ -462,7 +462,7 @@ function ExternalInvoiceModal({ onConfirm, onClose }) {
               <div style={{ fontSize: 12, fontWeight: 700, color: '#374151', marginBottom: 8 }}>Add to invoice as:</div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
                 {[
-                  { mode: 'client', label: 'Pass cost to client', desc: `$${mockData.amount} added — excluded from tax & discounts`, color: '#3d8b37' },
+                  { mode: 'client', label: 'Pass cost to client', desc: `$${mockData.amount} added — excluded from tax & discounts`, color: '#1e7ad6' },
                   { mode: 'markup', label: 'Add with markup (15%)', desc: `$${(mockData.amount * 1.15).toFixed(2)} added — excluded from tax & discounts`, color: '#d97706' },
                   { mode: 'internal', label: 'Keep internal', desc: 'Reference only, not billed to client', color: '#6b7280' },
                 ].map(opt => (
@@ -575,9 +575,9 @@ function StageInvoiceEditor({ stage, services, onSave, onClose }) {
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20 }}>
           <div>
             <h2 style={{ fontSize: 18, fontWeight: 800, color: '#111827' }}>
-              Configure Line Items — {stage.name || `Stage ${stage.stageNum}`}
+              Configure Line Items — {stage.name || `Invoice ${stage.stageNum}`}
             </h2>
-            <div style={{ fontSize: 12, color: '#9ca3af', marginTop: 2 }}>Stage amount: {fmt(Number(stage.amount))}</div>
+            <div style={{ fontSize: 12, color: '#9ca3af', marginTop: 2 }}>Invoice amount: {fmt(Number(stage.amount))}</div>
           </div>
           <button onClick={onClose} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#6b7280', padding: 4 }}>
             <X size={20} />
@@ -671,21 +671,21 @@ function StageInvoiceEditor({ stage, services, onSave, onClose }) {
         {/* Total vs stage amount check */}
         <div style={{
           padding: '10px 16px', borderRadius: 6, marginBottom: 16,
-          background: Math.abs(total - Number(stage.amount)) < 0.01 ? '#f0fdf4' : '#fef3c7',
-          border: `1px solid ${Math.abs(total - Number(stage.amount)) < 0.01 ? '#bbf7d0' : '#fde68a'}`,
+          background: Math.abs(total - Number(stage.amount)) < 0.01 ? '#eff6ff' : '#fef3c7',
+          border: `1px solid ${Math.abs(total - Number(stage.amount)) < 0.01 ? '#bfdbfe' : '#fde68a'}`,
           fontSize: 13,
           display: 'flex', justifyContent: 'space-between',
         }}>
           <span style={{ color: Math.abs(total - Number(stage.amount)) < 0.01 ? '#15803d' : '#92400e', fontWeight: 600 }}>
-            {Math.abs(total - Number(stage.amount)) < 0.01 ? '✓ Line items match stage amount' : '⚠ Line items do not match stage amount'}
+            {Math.abs(total - Number(stage.amount)) < 0.01 ? '✓ Line items match invoice amount' : '⚠ Line items do not match invoice amount'}
           </span>
-          <span style={{ fontWeight: 700 }}>Total: {fmt(total)} / Target: {fmt(Number(stage.amount))}</span>
+          <span style={{ fontWeight: 700 }}>Total: {fmt(total)} / Invoice Target: {fmt(Number(stage.amount))}</span>
         </div>
 
         <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
           <button className="btn-secondary" onClick={onClose}>Cancel</button>
           <button className="btn-primary" onClick={() => { onSave(lineItems); onClose() }}>
-            Save Stage Invoice
+            Save Invoice
           </button>
         </div>
       </div>
@@ -700,8 +700,6 @@ function StandardEditor({ client, onSave, onSaveDraft, onBack, discountRules, se
   const [showManualDiscount, setShowManualDiscount] = useState(false)
   const [manualDiscount, setManualDiscount] = useState(null)
   const [appliedPreset, setAppliedPreset] = useState(null)
-  const [earlyPayEnabled, setEarlyPayEnabled] = useState(false)
-  const [earlyPay, setEarlyPay] = useState({ type: 'percent', value: 5, days: 3 })
   const [autoDiscountEnabled, setAutoDiscountEnabled] = useState(true)
   const [activeDropdownId, setActiveDropdownId] = useState(null)
   const [showExternalModal, setShowExternalModal] = useState(false)
@@ -758,10 +756,6 @@ function StandardEditor({ client, onSave, onSaveDraft, onBack, discountRules, se
   const tax = taxable * TAX_RATE
   // External items excluded from tax and discounts
   const total = taxable + tax + externalTotal
-
-  const earlyPayAmt = earlyPayEnabled
-    ? (earlyPay.type === 'percent' ? total * (earlyPay.value / 100) : earlyPay.value)
-    : 0
 
   const handleExternalInvoiceConfirm = ({ name, unitPrice, description, isExternal, externalLink, externalVendor }) => {
     setLineItems(prev => [...prev, {
@@ -1029,7 +1023,7 @@ function StandardEditor({ client, onSave, onSaveDraft, onBack, discountRules, se
                   type="checkbox"
                   checked={autoDiscountEnabled}
                   onChange={e => setAutoDiscountEnabled(e.target.checked)}
-                  style={{ width: 14, height: 14, cursor: 'pointer', accentColor: '#3d8b37' }}
+                  style={{ width: 14, height: 14, cursor: 'pointer', accentColor: '#1e7ad6' }}
                 />
                 <span style={{
                   background: autoDiscountEnabled ? '#dcfce7' : '#f3f4f6',
@@ -1115,65 +1109,6 @@ function StandardEditor({ client, onSave, onSaveDraft, onBack, discountRules, se
               <span style={{ color: '#374151' }}>Deposits</span>
               <button className="btn-ghost" style={{ fontSize: 13 }}>Add Deposit</button>
             </div>
-
-            {/* Early Pay Discount */}
-            <div style={{ borderTop: '1px solid #e5e7eb', marginTop: 12, paddingTop: 12 }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: earlyPayEnabled ? 12 : 0 }}>
-                <span style={{ fontSize: 14, fontWeight: 600, color: '#374151' }}>
-                  Early Pay Discount<NewBadge />
-                </span>
-                <button
-                  onClick={() => setEarlyPayEnabled(!earlyPayEnabled)}
-                  style={{
-                    width: 40, height: 22, borderRadius: 11, border: 'none', cursor: 'pointer',
-                    background: earlyPayEnabled ? '#3d8b37' : '#d1d5db', position: 'relative', transition: 'background 0.2s',
-                  }}
-                >
-                  <span style={{
-                    position: 'absolute', top: 3, left: earlyPayEnabled ? 20 : 3,
-                    width: 16, height: 16, borderRadius: '50%', background: '#fff', transition: 'left 0.2s',
-                  }} />
-                </button>
-              </div>
-
-              {earlyPayEnabled && (
-                <div>
-                  <div style={{ display: 'flex', gap: 8, marginBottom: 10 }}>
-                    <select value={earlyPay.type} onChange={e => setEarlyPay(p => ({ ...p, type: e.target.value }))}
-                      style={{ border: '1px solid #d1d5db', borderRadius: 4, padding: '6px 8px', fontSize: 13 }}>
-                      <option value="percent">%</option>
-                      <option value="fixed">$</option>
-                    </select>
-                    <input type="number" value={earlyPay.value}
-                      onChange={e => setEarlyPay(p => ({ ...p, value: Number(e.target.value) }))}
-                      min={0}
-                      style={{ width: 70, border: '1px solid #d1d5db', borderRadius: 4, padding: '6px 8px', fontSize: 13 }} />
-                    <span style={{ alignSelf: 'center', fontSize: 13, color: '#6b7280' }}>within</span>
-                    <input type="number" value={earlyPay.days}
-                      onChange={e => setEarlyPay(p => ({ ...p, days: Number(e.target.value) }))}
-                      min={1}
-                      style={{ width: 60, border: '1px solid #d1d5db', borderRadius: 4, padding: '6px 8px', fontSize: 13 }} />
-                    <span style={{ alignSelf: 'center', fontSize: 13, color: '#6b7280' }}>days</span>
-                  </div>
-
-                  <div style={{
-                    background: '#f0fdf4', borderRadius: 6, padding: '10px 14px', fontSize: 12,
-                    color: '#374151', marginBottom: 8,
-                  }}>
-                    Pay within {earlyPay.days} days: <strong>{fmt(total - earlyPayAmt)}</strong>
-                    {' '}| After {earlyPay.days} days: <strong>{fmt(total)}</strong>
-                  </div>
-
-                  <div style={{
-                    display: 'inline-flex', alignItems: 'center', gap: 4,
-                    background: '#fef3c7', color: '#92400e', borderRadius: 20,
-                    padding: '3px 10px', fontSize: 11, fontWeight: 600,
-                  }}>
-                    Offer expires in {earlyPay.days} days
-                  </div>
-                </div>
-              )}
-            </div>
           </div>
         </div>
       </div>
@@ -1188,7 +1123,7 @@ function StandardEditor({ client, onSave, onSaveDraft, onBack, discountRules, se
   )
 }
 
-// ── Milestone Invoice Editor ──────────────────────────────────────────────────
+// ── Tiered Invoice Editor ─────────────────────────────────────────────────────
 
 function emptyStage(num) {
   return { id: Date.now() + Math.random(), name: '', amount: 0, timing: 'Due now', note: '', stageNum: num, lineItems: null }
@@ -1224,7 +1159,7 @@ function MilestoneEditor({ client, onSave, onSaveDraft, onBack, services }) {
         <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
           <button className="btn-secondary" onClick={onBack} style={{ fontSize: 13 }}>← Back</button>
           <div>
-            <div style={{ fontSize: 13, color: '#9ca3af', marginBottom: 2 }}>Milestone Invoice for</div>
+            <div style={{ fontSize: 13, color: '#9ca3af', marginBottom: 2 }}>Tiered Invoice for</div>
             <h1 style={{ fontSize: 26, fontWeight: 900, color: '#111827' }}>{client.name}</h1>
           </div>
         </div>
@@ -1247,8 +1182,8 @@ function MilestoneEditor({ client, onSave, onSaveDraft, onBack, services }) {
           background: '#fef3c7', border: '1px solid #fde68a', borderRadius: 6,
           padding: '10px 16px', marginBottom: 16, fontSize: 13, color: '#92400e',
         }}>
-          ⚠ Configure the line items for each stage before saving.
-          {' '}{stages.filter(s => s.lineItems !== null).length} / {stages.length} stages configured.
+          ⚠ Configure the line items for each invoice before saving.
+          {' '}{stages.filter(s => s.lineItems !== null).length} / {stages.length} invoices configured.
         </div>
       )}
 
@@ -1271,24 +1206,24 @@ function MilestoneEditor({ client, onSave, onSaveDraft, onBack, services }) {
           background: '#fef3c7', border: '1px solid #fde68a', borderRadius: 6,
           padding: '10px 16px', marginBottom: 16, fontSize: 13, color: '#92400e',
         }}>
-          ⚠ Stage total ({fmt(stageSum)}) {diff > 0 ? 'is short by' : 'exceeds job value by'} {fmt(Math.abs(diff))}
+          ⚠ Invoice total ({fmt(stageSum)}) {diff > 0 ? 'is short by' : 'exceeds job value by'} {fmt(Math.abs(diff))}
         </div>
       )}
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 20 }}>
         {/* Stage list */}
         <div className="card" style={{ padding: 24 }}>
-          <h3 style={{ fontSize: 16, fontWeight: 800, color: '#111827', marginBottom: 20 }}>Payment Stages</h3>
+          <h3 style={{ fontSize: 16, fontWeight: 800, color: '#111827', marginBottom: 20 }}>Payment Schedule</h3>
           {stages.map((stage, i) => (
             <div key={stage.id} style={{
-              border: `2px solid ${stage.lineItems ? '#bbf7d0' : '#e5e7eb'}`,
+              border: `2px solid ${stage.lineItems ? '#bfdbfe' : '#e5e7eb'}`,
               borderRadius: 8, padding: 16, marginBottom: 12,
-              background: stage.lineItems ? '#f0fdf4' : '#fff',
+              background: stage.lineItems ? '#eff6ff' : '#fff',
             }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10 }}>
                 <div style={{
                   width: 26, height: 26, borderRadius: '50%',
-                  background: stage.lineItems ? '#3d8b37' : '#f0fdf4',
+                  background: stage.lineItems ? '#1e7ad6' : '#eff6ff',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   fontSize: 12, fontWeight: 800,
                   color: stage.lineItems ? '#fff' : '#15803d', flexShrink: 0,
@@ -1297,7 +1232,7 @@ function MilestoneEditor({ client, onSave, onSaveDraft, onBack, services }) {
                 </div>
                 <input
                   value={stage.name} onChange={e => updateStage(stage.id, 'name', e.target.value)}
-                  placeholder="Stage name"
+                  placeholder="Invoice name"
                   style={{ flex: 1, border: '1px solid #e5e7eb', borderRadius: 6, padding: '7px 12px', fontSize: 14, color: '#111827' }}
                 />
                 <div style={{ position: 'relative', width: 120 }}>
@@ -1315,14 +1250,45 @@ function MilestoneEditor({ client, onSave, onSaveDraft, onBack, services }) {
                   </button>
                 )}
               </div>
-              <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 10 }}>
-                {['Due now', 'Selected date', 'Completion'].map(t => (
-                  <button key={t} onClick={() => updateStage(stage.id, 'timing', t)} style={{
-                    padding: '4px 12px', borderRadius: 20, fontSize: 12, fontWeight: 600, border: 'none', cursor: 'pointer',
-                    background: stage.timing === t ? '#3d8b37' : '#f3f4f6',
-                    color: stage.timing === t ? '#fff' : '#374151',
-                  }}>{t}</button>
-                ))}
+              {/* Payment option cards */}
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 8, marginBottom: 10 }}>
+                {[
+                  { key: 'Due now', icon: '⚡', label: 'Due Now', desc: 'Pay on send' },
+                  { key: 'Selected date', icon: '📅', label: 'Due at Selected Date', desc: 'Pick a due date' },
+                  { key: 'Completion', icon: '✅', label: 'Due at Completion', desc: 'Upon job completion' },
+                ].map(({ key, icon, label, desc }) => {
+                  const isActive = stage.timing === key || (key === 'Selected date' && stage.timing?.match(/^\d{4}-\d{2}-\d{2}$/))
+                  return (
+                    <div
+                      key={key}
+                      onClick={() => updateStage(stage.id, 'timing', key)}
+                      style={{
+                        border: `2px solid ${isActive ? '#3b82f6' : '#e5e7eb'}`,
+                        borderRadius: 8,
+                        padding: '10px 10px 8px',
+                        background: isActive ? '#eff6ff' : '#fafafa',
+                        cursor: 'pointer',
+                        transition: 'all 0.15s',
+                      }}
+                    >
+                      <div style={{ fontSize: 18, marginBottom: 4 }}>{icon}</div>
+                      <div style={{ fontSize: 11, fontWeight: 800, color: isActive ? '#15803d' : '#374151', marginBottom: 2, lineHeight: 1.2 }}>{label}</div>
+                      <div style={{ fontSize: 10, color: '#9ca3af' }}>{desc}</div>
+                      {key === 'Selected date' && isActive && (
+                        <input
+                          type="date"
+                          onClick={e => e.stopPropagation()}
+                          onChange={e => updateStage(stage.id, 'timing', e.target.value || 'Selected date')}
+                          value={stage.timing?.match(/^\d{4}-\d{2}-\d{2}$/) ? stage.timing : ''}
+                          style={{
+                            marginTop: 6, width: '100%', border: '1px solid #d1d5db',
+                            borderRadius: 4, padding: '4px 6px', fontSize: 11,
+                          }}
+                        />
+                      )}
+                    </div>
+                  )
+                })}
               </div>
               <input value={stage.note} onChange={e => updateStage(stage.id, 'note', e.target.value)}
                 placeholder="Optional note"
@@ -1334,7 +1300,7 @@ function MilestoneEditor({ client, onSave, onSaveDraft, onBack, services }) {
                 style={{
                   width: '100%', padding: '8px 16px', borderRadius: 6, fontSize: 13, fontWeight: 600,
                   border: `1px solid ${stage.lineItems ? '#15803d' : '#d1d5db'}`,
-                  background: stage.lineItems ? '#f0fdf4' : '#f9fafb',
+                  background: stage.lineItems ? '#eff6ff' : '#f9fafb',
                   color: stage.lineItems ? '#15803d' : '#374151', cursor: 'pointer',
                   display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
                 }}
@@ -1347,16 +1313,16 @@ function MilestoneEditor({ client, onSave, onSaveDraft, onBack, services }) {
             </div>
           ))}
           <button className="btn-secondary" onClick={addStage} style={{ width: '100%', justifyContent: 'center', marginTop: 4 }}>
-            <Plus size={14} /> Add Stage
+            <Plus size={14} /> Add Invoice
           </button>
 
           <div style={{
             marginTop: 16, padding: '12px 16px',
-            background: balanced ? '#f0fdf4' : '#fef3c7', borderRadius: 6,
+            background: balanced ? '#eff6ff' : '#fef3c7', borderRadius: 6,
             display: 'flex', justifyContent: 'space-between', alignItems: 'center',
           }}>
             <span style={{ fontSize: 14, fontWeight: 600, color: balanced ? '#15803d' : '#92400e' }}>
-              {balanced ? '✓ Stages balanced' : '⚠ Stages unbalanced'}
+              {balanced ? '✓ Invoices balanced' : '⚠ Invoices unbalanced'}
             </span>
             <span style={{ fontSize: 14, fontWeight: 800 }}>{fmt(stageSum)} / {fmt(Number(jobValue))}</span>
           </div>
@@ -1371,15 +1337,15 @@ function MilestoneEditor({ client, onSave, onSaveDraft, onBack, services }) {
               <div key={stage.id} style={{ position: 'relative', marginBottom: 28 }}>
                 <div style={{
                   position: 'absolute', left: -26, top: 2, width: 16, height: 16, borderRadius: '50%',
-                  background: stage.lineItems ? '#3d8b37' : '#e5e7eb',
-                  border: '2px solid #fff', boxShadow: `0 0 0 2px ${stage.lineItems ? '#3d8b37' : '#d1d5db'}`, zIndex: 1,
+                  background: stage.lineItems ? '#1e7ad6' : '#e5e7eb',
+                  border: '2px solid #fff', boxShadow: `0 0 0 2px ${stage.lineItems ? '#1e7ad6' : '#d1d5db'}`, zIndex: 1,
                 }} />
                 <div>
                   <div style={{ fontSize: 14, fontWeight: 700, color: '#111827' }}>
-                    Stage {i + 1}: {stage.name || '(Unnamed)'}
+                    Invoice {i + 1}: {stage.name || '(Unnamed)'}
                   </div>
                   <div style={{ fontSize: 12, color: '#6b7280', marginTop: 1 }}>{stage.timing}</div>
-                  <div style={{ fontSize: 16, fontWeight: 800, color: '#3d8b37', marginTop: 4 }}>
+                  <div style={{ fontSize: 16, fontWeight: 800, color: '#1e7ad6', marginTop: 4 }}>
                     {fmt(Number(stage.amount))}
                   </div>
                   <div style={{ fontSize: 11, color: '#9ca3af' }}>Running total: {fmt(stage.running)}</div>

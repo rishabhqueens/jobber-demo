@@ -182,7 +182,7 @@ export default function ProfitabilityLayer({ services, updateService, addService
     <div className="page-content">
       <div style={{ marginBottom: 24, display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
         <div>
-          <h1 style={{ fontSize: 32, fontWeight: 900, color: '#111827', marginBottom: 4 }}>Profitability Layer</h1>
+          <h1 style={{ fontSize: 32, fontWeight: 900, color: '#111827', marginBottom: 4 }}>Servicing Costs</h1>
           <p style={{ fontSize: 14, color: '#6b7280' }}>Review and adjust service economics. Click a row to edit cost breakdown.</p>
         </div>
         <button
@@ -224,7 +224,7 @@ export default function ProfitabilityLayer({ services, updateService, addService
                     onClick={() => openDetail(svc)}
                     style={{
                       borderBottom: '1px solid #f3f4f6',
-                      background: isSelected ? '#f0fdf4' : 'transparent',
+                      background: isSelected ? '#eff6ff' : 'transparent',
                       cursor: 'pointer',
                       transition: 'background 0.1s',
                     }}

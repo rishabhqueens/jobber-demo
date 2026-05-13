@@ -261,7 +261,7 @@ function FeatureSpotlight({ navigate }) {
   return (
     <div style={{ marginBottom: 32, position: 'relative' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
-        <span style={{ fontSize: 14, fontWeight: 700, color: '#6b7280' }}>✦ What's New in Your Jobber</span>
+        <span style={{ fontSize: 14, fontWeight: 700, color: '#6b7280' }}>✦ What's New in ServiceTitan</span>
         <button
           onClick={dismiss}
           style={{
@@ -308,14 +308,14 @@ function FeatureSpotlight({ navigate }) {
         {/* Profitability Layer card */}
         <div style={{
           flex: 1, background: '#fff', border: '1px solid #e5e7eb',
-          borderLeft: '4px solid #3d8b37', borderRadius: 8, padding: '16px 20px',
+          borderLeft: '4px solid #1e7ad6', borderRadius: 8, padding: '16px 20px',
           display: 'flex', alignItems: 'flex-start', gap: 14,
         }}>
           <div style={{
-            width: 40, height: 40, borderRadius: '50%', background: '#f0fdf4',
+            width: 40, height: 40, borderRadius: '50%', background: '#eff6ff',
             display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
           }}>
-            <TrendingUp size={20} color="#3d8b37" />
+            <TrendingUp size={20} color="#1e7ad6" />
           </div>
           <div style={{ flex: 1 }}>
             <div style={{ fontWeight: 700, fontSize: 15, color: '#111827', marginBottom: 4 }}>Profitability Layer</div>
@@ -326,7 +326,7 @@ function FeatureSpotlight({ navigate }) {
               onClick={() => navigate('profitability-layer')}
               style={{
                 background: 'none', border: 'none', cursor: 'pointer',
-                color: '#3d8b37', fontWeight: 700, fontSize: 13, padding: 0,
+                color: '#1e7ad6', fontWeight: 700, fontSize: 13, padding: 0,
                 display: 'flex', alignItems: 'center', gap: 4,
               }}
             >
@@ -361,14 +361,14 @@ export default function Dashboard({ navigate }) {
               style={{
                 background: 'transparent',
                 border: '1px solid transparent',
-                borderBottom: isActive ? '2px solid #3d8b37' : '2px solid transparent',
+                borderBottom: isActive ? '2px solid #1e7ad6' : '2px solid transparent',
                 borderRadius: isActive ? '6px 6px 0 0' : '6px 6px 0 0',
                 borderColor: isActive ? '#e5e7eb' : 'transparent',
-                borderBottomColor: isActive ? '#3d8b37' : 'transparent',
+                borderBottomColor: isActive ? '#1e7ad6' : 'transparent',
                 padding: '8px 20px',
                 fontWeight: 600,
                 fontSize: 14,
-                color: isActive ? '#3d8b37' : '#6b7280',
+                color: isActive ? '#1e7ad6' : '#6b7280',
                 cursor: 'pointer',
                 marginBottom: -1,
               }}
@@ -449,7 +449,7 @@ export default function Dashboard({ navigate }) {
             borderRadius: 6,
             padding: '4px 10px',
             fontSize: 12,
-            color: '#3d8b37',
+            color: '#1e7ad6',
             cursor: 'pointer',
             textDecoration: 'underline',
           }}>

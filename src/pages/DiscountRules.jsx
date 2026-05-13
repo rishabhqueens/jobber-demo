@@ -74,9 +74,9 @@ function StepNav({ step, onBack }) {
           <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
             <span style={{
               fontSize: 12, fontWeight: i <= step ? 700 : 400,
-              color: i < step ? '#9ca3af' : i === step ? '#3d8b37' : '#d1d5db',
+              color: i < step ? '#9ca3af' : i === step ? '#1e7ad6' : '#d1d5db',
               padding: '4px 8px',
-              background: i === step ? '#f0fdf4' : 'transparent',
+              background: i === step ? '#eff6ff' : 'transparent',
               borderRadius: 4,
             }}>
               {label}
@@ -97,8 +97,8 @@ const TYPE_CARDS = [
   {
     id: 'date',
     icon: Tag,
-    iconColor: '#3d8b37',
-    iconBg: '#f0fdf4',
+    iconColor: '#1e7ad6',
+    iconBg: '#eff6ff',
     title: 'Date-based Promotion',
     description: 'Run time-bound offers for a specific period.',
     example: '"10% off all invoices in March"',
@@ -141,7 +141,7 @@ function TypeStep({ onSelect }) {
             onMouseLeave={() => setHovered(null)}
             style={{
               background: '#fff',
-              border: `2px solid ${hovered === id ? '#3d8b37' : '#e5e7eb'}`,
+              border: `2px solid ${hovered === id ? '#1e7ad6' : '#e5e7eb'}`,
               borderRadius: 12,
               padding: 24,
               cursor: 'pointer',
@@ -223,7 +223,7 @@ function ModeField({ form, set }) {
           <button key={m} onClick={() => set('mode', m)} style={{
             padding: '7px 18px', borderRadius: 20, fontSize: 13, fontWeight: 600, cursor: 'pointer',
             border: 'none',
-            background: form.mode === m ? '#3d8b37' : '#f3f4f6',
+            background: form.mode === m ? '#1e7ad6' : '#f3f4f6',
             color: form.mode === m ? '#fff' : '#374151',
           }}>{m}</button>
         ))}
@@ -343,9 +343,9 @@ function ServiceConfigStep({ form, set, services }) {
                     onClick={() => toggleService(svc.name)}
                     style={{
                       padding: '5px 12px', borderRadius: 16, fontSize: 13, fontWeight: 600, cursor: 'pointer',
-                      border: `2px solid ${selected ? '#3d8b37' : '#e5e7eb'}`,
-                      background: selected ? '#f0fdf4' : '#fff',
-                      color: selected ? '#3d8b37' : '#374151',
+                      border: `2px solid ${selected ? '#1e7ad6' : '#e5e7eb'}`,
+                      background: selected ? '#eff6ff' : '#fff',
+                      color: selected ? '#1e7ad6' : '#374151',
                       transition: 'all 0.1s',
                     }}
                   >
@@ -355,7 +355,7 @@ function ServiceConfigStep({ form, set, services }) {
               })}
             </div>
             {selectedServices.length > 0 && (
-              <div style={{ fontSize: 12, color: '#3d8b37', marginTop: 6 }}>
+              <div style={{ fontSize: 12, color: '#1e7ad6', marginTop: 6 }}>
                 Selected: {selectedServices.join(', ')}
               </div>
             )}
@@ -369,7 +369,7 @@ function ServiceConfigStep({ form, set, services }) {
             <button key={m} onClick={() => set('period', m)} style={{
               padding: '7px 18px', borderRadius: 20, fontSize: 13, fontWeight: 600, cursor: 'pointer',
               border: 'none',
-              background: (form.period || 'Always') === m ? '#3d8b37' : '#f3f4f6',
+              background: (form.period || 'Always') === m ? '#1e7ad6' : '#f3f4f6',
               color: (form.period || 'Always') === m ? '#fff' : '#374151',
             }}>{m}</button>
           ))}
@@ -421,16 +421,16 @@ function SegmentConfigStep({ form, set }) {
                 key={opt.value}
                 onClick={() => set('segmentType', opt.value)}
                 style={{
-                  border: `2px solid ${selected ? '#3d8b37' : '#e5e7eb'}`,
+                  border: `2px solid ${selected ? '#1e7ad6' : '#e5e7eb'}`,
                   borderRadius: 8, padding: '12px 16px', cursor: 'pointer',
-                  background: selected ? '#f0fdf4' : '#fff', transition: 'all 0.1s',
+                  background: selected ? '#eff6ff' : '#fff', transition: 'all 0.1s',
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
                   <div style={{
                     width: 16, height: 16, borderRadius: '50%', marginTop: 2, flexShrink: 0,
-                    border: `2px solid ${selected ? '#3d8b37' : '#d1d5db'}`,
-                    background: selected ? '#3d8b37' : '#fff',
+                    border: `2px solid ${selected ? '#1e7ad6' : '#d1d5db'}`,
+                    background: selected ? '#1e7ad6' : '#fff',
                   }} />
                   <div>
                     <div style={{ fontWeight: 700, fontSize: 14, color: '#111827' }}>{opt.label}</div>
@@ -481,7 +481,7 @@ function SegmentConfigStep({ form, set }) {
             <button key={m} onClick={() => set('validity', m)} style={{
               padding: '7px 18px', borderRadius: 20, fontSize: 13, fontWeight: 600, cursor: 'pointer',
               border: 'none',
-              background: (form.validity || 'Always') === m ? '#3d8b37' : '#f3f4f6',
+              background: (form.validity || 'Always') === m ? '#1e7ad6' : '#f3f4f6',
               color: (form.validity || 'Always') === m ? '#fff' : '#374151',
             }}>{m}</button>
           ))}
@@ -590,16 +590,16 @@ function ExclusionsStep({ form, set, services }) {
             key={opt.value}
             onClick={() => set('stacking', opt.value)}
             style={{
-              border: `2px solid ${(form.stacking || 'stack') === opt.value ? '#3d8b37' : '#e5e7eb'}`,
+              border: `2px solid ${(form.stacking || 'stack') === opt.value ? '#1e7ad6' : '#e5e7eb'}`,
               borderRadius: 8, padding: '12px 16px', marginBottom: 8, cursor: 'pointer',
-              background: (form.stacking || 'stack') === opt.value ? '#f0fdf4' : '#fff',
+              background: (form.stacking || 'stack') === opt.value ? '#eff6ff' : '#fff',
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
               <div style={{
                 width: 16, height: 16, borderRadius: '50%',
-                border: `2px solid ${(form.stacking || 'stack') === opt.value ? '#3d8b37' : '#d1d5db'}`,
-                background: (form.stacking || 'stack') === opt.value ? '#3d8b37' : '#fff',
+                border: `2px solid ${(form.stacking || 'stack') === opt.value ? '#1e7ad6' : '#d1d5db'}`,
+                background: (form.stacking || 'stack') === opt.value ? '#1e7ad6' : '#fff',
                 flexShrink: 0,
               }} />
               <div>
@@ -696,7 +696,7 @@ function PreviewStep({ form, selectedType }) {
                 <span style={{ color: '#374151' }}>{inv.client} · Invoice #{inv.num}</span>
                 <div style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
                   <span style={{ color: '#9ca3af', textDecoration: 'line-through' }}>${inv.original.toFixed(2)}</span>
-                  <span style={{ fontWeight: 700, color: '#3d8b37' }}>→ ${final.toFixed(2)}</span>
+                  <span style={{ fontWeight: 700, color: '#1e7ad6' }}>→ ${final.toFixed(2)}</span>
                 </div>
               </div>
             )
@@ -748,11 +748,11 @@ function PreviewStep({ form, selectedType }) {
           <span style={{ fontSize: 13, color: '#6b7280' }}>Daniel Brooks · Invoice #4</span>
           <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
             <span style={{ fontSize: 14, color: '#9ca3af', textDecoration: 'line-through' }}>${sampleOriginal.toFixed(2)}</span>
-            <span style={{ fontSize: 16, fontWeight: 800, color: '#3d8b37' }}>${sampleDiscounted.toFixed(2)}</span>
+            <span style={{ fontSize: 16, fontWeight: 800, color: '#1e7ad6' }}>${sampleDiscounted.toFixed(2)}</span>
           </div>
         </div>
         <div style={{
-          background: '#f0fdf4', borderRadius: 6, padding: '8px 12px', fontSize: 12, color: '#15803d',
+          background: '#eff6ff', borderRadius: 6, padding: '8px 12px', fontSize: 12, color: '#15803d',
         }}>
           ✓ Discount applied: {form.name || 'New Rule'} — {discountLabel} off
         </div>
@@ -813,16 +813,16 @@ function SaveStep({ form, set, onSave }) {
             key={opt.value}
             onClick={() => setSaveMode(opt.value)}
             style={{
-              border: `2px solid ${saveMode === opt.value ? '#3d8b37' : '#e5e7eb'}`,
+              border: `2px solid ${saveMode === opt.value ? '#1e7ad6' : '#e5e7eb'}`,
               borderRadius: 8, padding: '12px 16px', marginBottom: 8, cursor: 'pointer',
-              background: saveMode === opt.value ? '#f0fdf4' : '#fff',
+              background: saveMode === opt.value ? '#eff6ff' : '#fff',
             }}
           >
             <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
               <div style={{
                 width: 16, height: 16, borderRadius: '50%', marginTop: 2,
-                border: `2px solid ${saveMode === opt.value ? '#3d8b37' : '#d1d5db'}`,
-                background: saveMode === opt.value ? '#3d8b37' : '#fff',
+                border: `2px solid ${saveMode === opt.value ? '#1e7ad6' : '#d1d5db'}`,
+                background: saveMode === opt.value ? '#1e7ad6' : '#fff',
                 flexShrink: 0,
               }} />
               <div>
@@ -1114,7 +1114,7 @@ export default function DiscountRules({ discountRules, addDiscountRule, updateDi
     <div className="page-content">
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 24 }}>
         <div>
-          <h1 style={{ fontSize: 32, fontWeight: 900, color: '#111827', marginBottom: 4 }}>Discount Rules</h1>
+          <h1 style={{ fontSize: 32, fontWeight: 900, color: '#111827', marginBottom: 4 }}>Global Discount Rules</h1>
           <p style={{ fontSize: 14, color: '#6b7280' }}>Manage automatic and preset discounts applied to invoices, quotes, and jobs.</p>
         </div>
         <button className="btn-primary" onClick={() => setView('create')} style={{ gap: 8 }}>

@@ -356,11 +356,11 @@ export default function NewQuoteTemplate({ navigate, addQuote }) {
               <button
                 onClick={() => addLineItem(true)}
                 style={{
-                  background: 'transparent', border: '1px solid #3d8b37', color: '#3d8b37',
+                  background: 'transparent', border: '1px solid #1e7ad6', color: '#1e7ad6',
                   borderRadius: 6, padding: '8px 14px', fontSize: 13, fontWeight: 600,
                   cursor: 'pointer',
                 }}
-                onMouseEnter={e => e.currentTarget.style.background = '#f0fdf4'}
+                onMouseEnter={e => e.currentTarget.style.background = '#eff6ff'}
                 onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
               >
                 New optional line item

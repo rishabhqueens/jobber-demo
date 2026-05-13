@@ -8,6 +8,7 @@ import NewQuoteTemplate from './pages/NewQuoteTemplate'
 import Insights from './pages/Insights'
 import DiscountRules from './pages/DiscountRules'
 import ProfitabilityLayer from './pages/ProfitabilityLayer'
+import NewFeatureWorkflows from './pages/NewFeatureWorkflows'
 import { initialInvoices, initialQuotes, initialDiscountRules, initialServices } from './data/mockData'
 
 export default function App() {
@@ -79,7 +80,7 @@ export default function App() {
       case 'quotes/new-template':
         return <NewQuoteTemplate navigate={navigate} addQuote={addQuote} />
       case 'insights':
-        return <Insights services={services} />
+        return <Insights services={services} navigate={navigate} />
       case 'discount-rules':
         return (
           <DiscountRules
@@ -91,6 +92,8 @@ export default function App() {
         )
       case 'profitability-layer':
         return <ProfitabilityLayer services={services} updateService={updateService} addService={addService} />
+      case 'feature-workflows':
+        return <NewFeatureWorkflows navigate={navigate} />
       default:
         return <Dashboard navigate={navigate} />
     }

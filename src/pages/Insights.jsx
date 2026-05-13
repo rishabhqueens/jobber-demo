@@ -23,11 +23,11 @@ const prevTotalRevenue = 38200
 const revenueGrowth = (((totalRevenue - prevTotalRevenue) / prevTotalRevenue) * 100).toFixed(1)
 
 const revenueByCategory = [
-  { label: 'Lawn care',            value: 12400, pct: 28, color: '#3d8b37' },
+  { label: 'Lawn care',            value: 12400, pct: 28, color: '#1e7ad6' },
   { label: 'Property maintenance', value: 9800,  pct: 22, color: '#16a34a' },
   { label: 'Snow removal',         value: 7600,  pct: 17, color: '#4ade80' },
   { label: 'Fertilization',        value: 6200,  pct: 14, color: '#86efac' },
-  { label: 'Consulting',           value: 5100,  pct: 11, color: '#bbf7d0' },
+  { label: 'Consulting',           value: 5100,  pct: 11, color: '#bfdbfe' },
   { label: 'Other',                value: 3060,  pct: 8,  color: '#d1fae5' },
 ]
 
@@ -39,7 +39,7 @@ const topClients = [
 ]
 
 const jobStats = [
-  { label: 'Completed',   value: 131, color: '#3d8b37', pct: 73 },
+  { label: 'Completed',   value: 131, color: '#1e7ad6', pct: 73 },
   { label: 'In Progress', value: 24,  color: '#f59e0b', pct: 13 },
   { label: 'Scheduled',   value: 19,  color: '#3b82f6', pct: 11 },
   { label: 'Cancelled',   value: 6,   color: '#ef4444', pct: 3  },
@@ -49,7 +49,7 @@ const totalJobs = jobStats.reduce((s, d) => s + d.value, 0)
 const quotePipeline = [
   { label: 'Created',  value: 58, color: '#6b7280' },
   { label: 'Sent',     value: 41, color: '#3b82f6' },
-  { label: 'Approved', value: 28, color: '#3d8b37' },
+  { label: 'Approved', value: 28, color: '#1e7ad6' },
   { label: 'Declined', value: 9,  color: '#ef4444' },
 ]
 
@@ -99,7 +99,7 @@ function BarChart({ data, highlight }) {
             {/* Bar */}
             <rect
               x={x} y={y} width={barW} height={h}
-              fill={isHighlight ? '#2f7029' : '#3d8b37'} rx={4}
+              fill={isHighlight ? '#1763b0' : '#1e7ad6'} rx={4}
               opacity={isHighlight ? 1 : 0.82}
             />
             {/* Revenue label above bar */}
@@ -117,7 +117,7 @@ function BarChart({ data, highlight }) {
   )
 }
 
-function Sparkline({ values, color = '#3d8b37', height = 36, width = 100 }) {
+function Sparkline({ values, color = '#1e7ad6', height = 36, width = 100 }) {
   const max = Math.max(...values)
   const min = Math.min(...values)
   const range = max - min || 1
@@ -279,17 +279,17 @@ function OverviewTab() {
           {
             label: 'Total Revenue', value: `$${(totalRevenue / 1000).toFixed(1)}k`,
             sub: `+${revenueGrowth}% vs last year`, up: true,
-            spark: sparkVals, color: '#3d8b37',
+            spark: sparkVals, color: '#1e7ad6',
           },
           {
             label: 'Avg Invoice Value', value: '$285',
             sub: '+8.2% vs last year', up: true,
-            spark: [220, 240, 255, 270, 280, 265, 290, 285, 310, 295, 280, 285], color: '#3d8b37',
+            spark: [220, 240, 255, 270, 280, 265, 290, 285, 310, 295, 280, 285], color: '#1e7ad6',
           },
           {
             label: 'Jobs Completed', value: `${totalJobs}`,
             sub: '+14.3% vs last year', up: true,
-            spark: [6, 9, 11, 8, 14, 13, 17, 15, 19, 12, 11, 16], color: '#3d8b37',
+            spark: [6, 9, 11, 8, 14, 13, 17, 15, 19, 12, 11, 16], color: '#1e7ad6',
           },
           {
             label: 'New Clients', value: '4',
@@ -316,7 +316,7 @@ function OverviewTab() {
           <button style={{
             display: 'flex', alignItems: 'center', gap: 6, background: 'none',
             border: '1px solid #e5e7eb', borderRadius: 6, padding: '4px 10px',
-            fontSize: 12, color: '#3d8b37', cursor: 'pointer', textDecoration: 'underline',
+            fontSize: 12, color: '#1e7ad6', cursor: 'pointer', textDecoration: 'underline',
           }}>
             <Calendar size={12} /> Feb 1, 2026 - Feb 28, 2026
           </button>
@@ -411,7 +411,7 @@ function CashflowProjected() {
               <span style={{ color: '#111827', fontWeight: 600 }}>${expected.toLocaleString()}</span>
             </div>
             <div style={{ height: 5, background: '#f3f4f6', borderRadius: 3, overflow: 'hidden' }}>
-              <div style={{ height: '100%', width: `${(received / expected) * 100}%`, background: '#3d8b37', borderRadius: 3 }} />
+              <div style={{ height: '100%', width: `${(received / expected) * 100}%`, background: '#1e7ad6', borderRadius: 3 }} />
             </div>
           </div>
         ))}
@@ -499,7 +499,7 @@ function RevenueTab() {
               paddingBottom: 14, borderBottom: '1px solid #f3f4f6',
             }}>
               <div style={{
-                width: 32, height: 32, borderRadius: '50%', background: '#f0fdf4',
+                width: 32, height: 32, borderRadius: '50%', background: '#eff6ff',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 fontSize: 12, fontWeight: 700, color: '#15803d', flexShrink: 0,
               }}>
@@ -559,7 +559,7 @@ function CashflowTab() {
                 <td style={{ padding: '12px 12px', textAlign: 'right', fontWeight: 700, fontSize: 13, color: '#111827' }}>${amount.toFixed(2)}</td>
                 <td style={{ padding: '12px 12px', textAlign: 'right' }}>
                   <span style={{
-                    background: urgent ? '#fef2f2' : '#f0fdf4',
+                    background: urgent ? '#fef2f2' : '#eff6ff',
                     color: urgent ? '#b91c1c' : '#15803d',
                     borderRadius: 20, padding: '3px 10px', fontSize: 11, fontWeight: 600,
                   }}>
@@ -579,7 +579,7 @@ function CashflowTab() {
           <button style={{
             display: 'flex', alignItems: 'center', gap: 6, background: 'none',
             border: '1px solid #e5e7eb', borderRadius: 6, padding: '4px 10px',
-            fontSize: 12, color: '#3d8b37', cursor: 'pointer', textDecoration: 'underline',
+            fontSize: 12, color: '#1e7ad6', cursor: 'pointer', textDecoration: 'underline',
           }}>
             <Calendar size={12} /> Feb 1, 2026 - Feb 28, 2026
           </button>
@@ -649,7 +649,7 @@ function WorkTab() {
             <FunnelBar key={label} label={label} value={value} max={quotePipeline[0].value} color={color} total={quotePipeline[0].value} />
           ))}
           <div style={{
-            marginTop: 16, padding: '12px 16px', background: '#f0fdf4', borderRadius: 8,
+            marginTop: 16, padding: '12px 16px', background: '#eff6ff', borderRadius: 8,
             display: 'flex', justifyContent: 'space-between', alignItems: 'center',
           }}>
             <span style={{ fontSize: 14, color: '#15803d', fontWeight: 600 }}>Conversion rate</span>
@@ -676,7 +676,7 @@ function WorkTab() {
             const y = 120 - barH
             return (
               <g key={d.month}>
-                <rect x={x} y={y} width={44} height={barH} fill="#3d8b37" rx={3} opacity="0.8" />
+                <rect x={x} y={y} width={44} height={barH} fill="#1e7ad6" rx={3} opacity="0.8" />
                 <text x={x + 22} y={133} textAnchor="middle" fontSize="10" fill="#9ca3af">{d.month}</text>
                 <text x={x + 22} y={y - 4} textAnchor="middle" fontSize="10" fill="#6b7280">{d.jobs}</text>
               </g>
@@ -753,7 +753,7 @@ function ClientsTab() {
                 {i + 1}
               </div>
               <div style={{
-                width: 32, height: 32, borderRadius: '50%', background: '#f0fdf4',
+                width: 32, height: 32, borderRadius: '50%', background: '#eff6ff',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 fontSize: 11, fontWeight: 700, color: '#15803d', flexShrink: 0,
               }}>
@@ -781,7 +781,7 @@ function ClientsTab() {
           <div style={{ position: 'relative', flexShrink: 0 }}>
             <DonutChart
               segments={[
-                { label: 'Retained', pct: retentionRate, color: '#3d8b37' },
+                { label: 'Retained', pct: retentionRate, color: '#1e7ad6' },
                 { label: 'Churned',  pct: 100 - retentionRate, color: '#f3f4f6' },
               ]}
               size={120}
@@ -800,7 +800,7 @@ function ClientsTab() {
             </div>
             <div style={{ display: 'flex', gap: 24 }}>
               <div>
-                <div style={{ fontSize: 24, fontWeight: 900, color: '#3d8b37' }}>37</div>
+                <div style={{ fontSize: 24, fontWeight: 900, color: '#1e7ad6' }}>37</div>
                 <div style={{ fontSize: 12, color: '#9ca3af' }}>Returning clients</div>
               </div>
               <div>
@@ -828,7 +828,7 @@ function deriveMetrics(s) {
   return { totalCost, marginDollar, marginPct }
 }
 
-function ProfitabilityTab({ services }) {
+function ProfitabilityTab({ services, navigate }) {
   const withMetrics = (services || []).map(s => ({ ...s, ...deriveMetrics(s) }))
 
   const overallMargin = withMetrics.length > 0
@@ -840,7 +840,7 @@ function ProfitabilityTab({ services }) {
   const discountImpact = 142 // mock value
 
   const statusColor = (m) =>
-    m.marginPct >= m.targetMargin ? '#3d8b37' : m.marginPct > 0 ? '#f59e0b' : '#ef4444'
+    m.marginPct >= m.targetMargin ? '#1e7ad6' : m.marginPct > 0 ? '#f59e0b' : '#ef4444'
 
   const sortedByMargin = [...withMetrics].sort((a, b) => b.marginDollar - a.marginDollar).slice(0, 5)
   const lowMarginAlerts = withMetrics.filter(m => m.marginPct < m.targetMargin)
@@ -855,10 +855,47 @@ function ProfitabilityTab({ services }) {
 
   return (
     <div>
+      {/* Data source info card */}
+      <div style={{
+        background: '#eff6ff',
+        borderLeft: '4px solid #3b82f6',
+        borderRadius: '0 8px 8px 0',
+        padding: '12px 16px',
+        marginBottom: 20,
+        display: 'flex',
+        alignItems: 'center',
+        gap: 12,
+      }}>
+        <span style={{ fontSize: 18 }}>ℹ️</span>
+        <div style={{ flex: 1 }}>
+          <span style={{ fontSize: 13, color: '#1e40af' }}>
+            This dashboard uses your costing data for services. Make revisions to costing data to revise these numbers.
+          </span>
+          {navigate && (
+            <button
+              onClick={() => navigate('profitability-layer')}
+              style={{
+                marginLeft: 10,
+                background: 'none',
+                border: 'none',
+                color: '#2563eb',
+                fontWeight: 700,
+                fontSize: 13,
+                cursor: 'pointer',
+                padding: 0,
+                textDecoration: 'underline',
+              }}
+            >
+              → Go to Servicing Costs
+            </button>
+          )}
+        </div>
+      </div>
+
       {/* KPI cards */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16, marginBottom: 28 }}>
         {[
-          { label: 'Overall Margin %', value: `${overallMargin}%`, color: '#3d8b37', description: 'Avg across all active services' },
+          { label: 'Overall Margin %', value: `${overallMargin}%`, color: '#1e7ad6', description: 'Avg across all active services' },
           { label: 'Revenue vs Est. Profit', value: `$${totalRevenue} / $${totalProfit}`, color: '#374151', description: 'Total billings vs net after costs' },
           { label: 'Services Below Target', value: `${belowTarget} ⚠`, color: '#d97706', description: 'Services not meeting margin goal ⚠' },
           { label: 'Discount Impact', value: `-$${discountImpact}`, color: '#b91c1c', description: 'Est. revenue lost to active discounts this month' },
@@ -899,7 +936,7 @@ function ProfitabilityTab({ services }) {
         <div className="card" style={{ padding: 24 }}>
           <h3 style={{ fontSize: 16, fontWeight: 800, color: '#111827', marginBottom: 8 }}>Margin Trend</h3>
           <div style={{ fontSize: 12, color: '#9ca3af', marginBottom: 16 }}>Apr 2025 – Mar 2026</div>
-          <Sparkline values={mockTrend} color="#3d8b37" width={280} height={60} />
+          <Sparkline values={mockTrend} color="#1e7ad6" width={280} height={60} />
           <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11, color: '#9ca3af', marginTop: 8 }}>
             <span>Apr</span><span>Jul</span><span>Oct</span><span>Jan</span><span>Mar</span>
           </div>
@@ -978,7 +1015,7 @@ function ProfitabilityTab({ services }) {
         </table>
       </div>
 
-      {/* Jobber AI Insights */}
+      {/* ServiceTitan AI Insights */}
       <div style={{
         background: 'linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%)',
         border: '1px solid #fde68a',
@@ -987,19 +1024,19 @@ function ProfitabilityTab({ services }) {
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 20 }}>
           <span style={{ fontSize: 18 }}>✦</span>
-          <h3 style={{ fontSize: 16, fontWeight: 800, color: '#92400e', margin: 0 }}>Jobber AI Insights</h3>
+          <h3 style={{ fontSize: 16, fontWeight: 800, color: '#92400e', margin: 0 }}>ServiceTitan AI Insights</h3>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
           {[
             {
-              border: '#3d8b37',
-              bg: '#f0fdf4',
+              border: '#1e7ad6',
+              bg: '#eff6ff',
               icon: '📈',
               text: <><strong>Discounts driving bookings:</strong> Spring Promo (10%) added an est. 3 Lawn Mowing jobs in Mar → +$255 revenue. Net impact: +$113 after discount cost.</>,
             },
             {
-              border: '#3d8b37',
-              bg: '#f0fdf4',
+              border: '#1e7ad6',
+              bg: '#eff6ff',
               icon: '✅',
               text: <><strong>Net positive ROI on discounts:</strong> Despite -$142 in discounts issued, new bookings generated +$397 additional revenue — a 2.8× return.</>,
             },
@@ -1041,7 +1078,7 @@ function ProfitabilityTab({ services }) {
 
 const TABS = ['Overview', 'Revenue', 'Cashflow', 'Work', 'Clients', 'Profitability']
 
-export default function Insights({ services }) {
+export default function Insights({ services, navigate }) {
   const [activeTab, setActiveTab] = useState('Overview')
   const [dateRange, setDateRange] = useState('Apr 2025 – Mar 2026')
 
@@ -1076,11 +1113,11 @@ export default function Insights({ services }) {
               style={{
                 background: 'transparent',
                 border: 'none',
-                borderBottom: active ? '2.5px solid #3d8b37' : '2.5px solid transparent',
+                borderBottom: active ? '2.5px solid #1e7ad6' : '2.5px solid transparent',
                 padding: '10px 20px',
                 fontWeight: active ? 700 : 500,
                 fontSize: 14,
-                color: active ? '#3d8b37' : isProfitability ? '#3d8b37' : '#6b7280',
+                color: active ? '#1e7ad6' : isProfitability ? '#1e7ad6' : '#6b7280',
                 cursor: 'pointer',
                 marginBottom: -1,
                 transition: 'all 0.15s',
@@ -1095,7 +1132,7 @@ export default function Insights({ services }) {
                   display: 'inline-block',
                   width: 7, height: 7,
                   borderRadius: '50%',
-                  background: '#3d8b37',
+                  background: '#1e7ad6',
                   animation: 'pulse-dot 2.2s ease-in-out infinite',
                   flexShrink: 0,
                 }} />
@@ -1118,7 +1155,7 @@ export default function Insights({ services }) {
       {activeTab === 'Cashflow'       && <CashflowTab />}
       {activeTab === 'Work'           && <WorkTab />}
       {activeTab === 'Clients'        && <ClientsTab />}
-      {activeTab === 'Profitability'  && <ProfitabilityTab services={services} />}
+      {activeTab === 'Profitability'  && <ProfitabilityTab services={services} navigate={navigate} />}
     </div>
   )
 }

@@ -161,10 +161,10 @@ export default function Quotes({ quotes, navigate }) {
         <div className="metric-card" style={{ flex: 1.2 }}>
           <div style={{ fontWeight: 700, fontSize: 14, color: '#111827', marginBottom: 8 }}>How can I get paid faster?</div>
           <div style={{ fontSize: 13, color: '#6b7280', marginBottom: 12 }}>
-            Jobber can help you take payments instantly in person or set up automatic payments.
+            ServiceTitan can help you take payments instantly in person or set up automatic payments.
           </div>
-          <button style={{ background: 'none', border: 'none', color: '#3d8b37', fontWeight: 600, fontSize: 13, cursor: 'pointer' }}>
-            ✦ Learn more with Jobber AI
+          <button style={{ background: 'none', border: 'none', color: '#1e7ad6', fontWeight: 600, fontSize: 13, cursor: 'pointer' }}>
+            ✦ Learn more with ServiceTitan AI
           </button>
         </div>
       </div>
@@ -246,7 +246,7 @@ export default function Quotes({ quotes, navigate }) {
                     borderBottom: idx < filtered.length - 1 ? '1px solid #f3f4f6' : 'none',
                     cursor: 'pointer',
                     transition: 'background 0.1s',
-                    background: selected.has(quote.id) ? '#f0fdf4' : 'transparent',
+                    background: selected.has(quote.id) ? '#eff6ff' : 'transparent',
                   }}
                   onMouseEnter={e => { if (!selected.has(quote.id)) e.currentTarget.style.background = '#fafafa' }}
                   onMouseLeave={e => { if (!selected.has(quote.id)) e.currentTarget.style.background = 'transparent' }}
@@ -256,9 +256,9 @@ export default function Quotes({ quotes, navigate }) {
                       onClick={e => { e.stopPropagation(); toggleSelect(quote.id) }}
                       style={{
                         width: 16, height: 16, border: '1.5px solid',
-                        borderColor: selected.has(quote.id) ? '#3d8b37' : '#d1d5db',
+                        borderColor: selected.has(quote.id) ? '#1e7ad6' : '#d1d5db',
                         borderRadius: 3, cursor: 'pointer',
-                        background: selected.has(quote.id) ? '#3d8b37' : 'transparent',
+                        background: selected.has(quote.id) ? '#1e7ad6' : 'transparent',
                         display: 'flex', alignItems: 'center', justifyContent: 'center',
                       }}
                     >

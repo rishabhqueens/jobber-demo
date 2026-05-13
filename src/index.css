@@ -21,7 +21,7 @@ input, textarea, select, button {
 button { cursor: pointer; }
 
 input:focus, textarea:focus, select:focus {
-  outline: 2px solid #3d8b37;
+  outline: 2px solid #1e7ad6;
   outline-offset: -1px;
 }
 
@@ -42,7 +42,7 @@ input:focus, textarea:focus, select:focus {
 }
 
 .btn-primary {
-  background: #3d8b37;
+  background: #1e7ad6;
   color: #fff;
   border: none;
   border-radius: 6px;
@@ -53,7 +53,7 @@ input:focus, textarea:focus, select:focus {
   gap: 6px;
   transition: background 0.15s;
 }
-.btn-primary:hover { background: #2f7029; }
+.btn-primary:hover { background: #1763b0; }
 
 .btn-secondary {
   background: #fff;
@@ -71,7 +71,7 @@ input:focus, textarea:focus, select:focus {
 
 .btn-ghost {
   background: transparent;
-  color: #3d8b37;
+  color: #1e7ad6;
   border: none;
   padding: 4px 0;
   font-weight: 500;
@@ -133,6 +133,11 @@ th { text-align: left; font-weight: 600; color: #6b7280; font-size: 13px; }
 }
 
 @keyframes sidebar-glow {
-  0%, 100% { box-shadow: 0 0 4px rgba(110, 224, 90, 0.4); }
-  50% { box-shadow: 0 0 8px rgba(110, 224, 90, 0.8); }
+  0%, 100% { box-shadow: 0 0 4px rgba(59, 130, 246, 0.4); }
+  50% { box-shadow: 0 0 8px rgba(59, 130, 246, 0.8); }
+}
+
+@keyframes glow-border {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.5); border-color: #3b82f6; }
+  50%       { box-shadow: 0 0 8px 2px rgba(59, 130, 246, 0.35); border-color: #1e7ad6; }
 }
